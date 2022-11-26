@@ -55,4 +55,13 @@ function isEmail(payload, options = null) {
   return Option.checkErrorMsg(options);
 }
 
-module.exports = { isEmail };
+function maskEmail(payload, option = null) {
+  let tempPayload = payload.split("@");
+  var first = tempPayload[0].substring(0, option.firstLetter);
+
+  tempPayload[0] =
+    first + tempPayload[0].substring(option.firstLetter).replace(/./g, option.mask ? option.mask : "*");
+  return tempPayload.join("@");
+}
+
+module.exports = { isEmail, maskEmail };

@@ -10,7 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/AchmadEko003/validate.git"
   },
-  "keywords": [],
+  "keywords": [
+    "validate"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
