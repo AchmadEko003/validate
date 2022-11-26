@@ -1,7 +1,7 @@
 const baseRegEx = "[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]";
 
 class Option {
-  static emailDomain(payload) {
+  static emailDomain(payload = null) {
     const result = [];
     const values = {
       gmail: payload.gmail ? "gmail.com" : null,
@@ -18,34 +18,41 @@ class Option {
     return result;
   }
 
-  static checkErrorMsg (payload) {
+  static checkErrorMsg(payload) {
     if (payload) {
       if (payload.errorMsg !== undefined) {
-        return payload.errorMsg
+        return payload.errorMsg;
       }
-      return "Wrong email format"
+      return "Wrong email format";
     } else {
-      return "Wrong email format"
+      return "Wrong email format";
     }
   }
 }
 
-function isEmail(payload, option) {
-  const regexp = baseRegEx + "@[a-zA-Z0-9-](?:.[a-zA-Z0-9-]+)";
+/**
+ *
+ * @param {String} payload email value
+ * @param {Object} options option email domain
+ * @returns {Boolean|String} true or error message
+ *
+ */
+function isEmail(payload, options = null) {
+  let regexp = baseRegEx;
+
+  if (options) {
+    regexp = `${regexp}@(${
+      options.custom ? options.custom : Option.emailDomain(options).join("|")
+    })`;
+  } else {
+    regexp = `${regexp}@[a-zA-Z0-9-](?:.[a-zA-Z0-9-]+)`;
+  }
+
   if (new RegExp(regexp).test(payload)) {
     return true;
   }
 
-  return Option.checkErrorMsg(option)
+  return Option.checkErrorMsg(options);
 }
 
-function isEmail2(payload, errorMsg = null, opt) {
-  console.log(Option.emailDomain(opt).join("|"));
-  const regexp = baseRegEx + "@(gmail.com|hotmail.com|yahoo.com)";
-  if (new RegExp(regexp).test(payload)) {
-    return true;
-  }
-  return errorMsg ? errorMsg : "Wrong email format";
-}
-
-module.exports = { isEmail, isEmail2 };
+module.exports = { isEmail };
