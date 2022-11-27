@@ -57,11 +57,19 @@ function isEmail(payload, options = null) {
 
 function maskEmail(payload, option = null) {
   let tempPayload = payload.split("@");
-  var first = tempPayload[0].substring(0, option.firstLetter);
 
-  tempPayload[0] =
-    first + tempPayload[0].substring(option.firstLetter).replace(/./g, option.mask ? option.mask : "*");
-  return tempPayload.join("@");
+  if (tempPayload[0].length > option.firstLetter) {
+    var first = tempPayload[0].substring(0, option.firstLetter);
+
+    tempPayload[0] =
+      first +
+      tempPayload[0]
+        .substring(option.firstLetter)
+        .replace(/./g, option.mask ? option.mask : "*");
+    return tempPayload.join("@");
+  }
+
+  return "Masked letter more than unmask";
 }
 
 module.exports = { isEmail, maskEmail };
