@@ -1,4 +1,5 @@
-import { isEmail, maskEmail } from './email';
-import { isEmpty } from './field-validate';
+const { isEmail, maskEmail } = require("./lib/isEmail");
+const { stringValidator } = require("./lib/isString");
+const { isEmpty } = require("./lib/field-validate");
 
-module.exports = { isEmpty, isEmail, maskEmail }
+module.exports = { isEmail, maskEmail, isEmpty, stringValidator };

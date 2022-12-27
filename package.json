@@ -1,6 +1,6 @@
 {
   "name": "@achmadeko003/validate",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "validate",
   "main": "index.js",
   "scripts": {
