@@ -6,6 +6,7 @@ A package for validate.
 
 - [Email](#email)
 - [Object](#object)
+- [String](#string)
 
 ## Installation
 
@@ -22,26 +23,39 @@ A function for validate email with a custom format.
 ```js
 import { isEmail } from "@achmadeko003/validate/index";
 
-// Basic usage
-isEmail("Pururu003@gmail.com");
+isEmail("Pururu003@gmail.com"); // Basic usage
 // true
 
-// Famous email domain
 isEmail("Pururu003@outlook.com", {
   gmail: true,
   outlook: true,
   yahoo: true,
   hotmail: true,
-});
+}); // Famous email domain
 // true
 
-// Famous custom email domain
-isEmail("Pururu003@madko.com", { custom: "madko.com" });
+isEmail("Pururu003@madko.com", { custom: "madko.com" }); // Custom email domain
 // true
 
-// Mask email
-isEmail("Pururu003@madko.com", { firstLetter: 3, mask: "*" });
+isEmail("Pururu003@madko.com", { firstLetter: 3, mask: "*" }); // Mask email
 // Pur******@madko.com
+```
+
+## String
+
+A function for validate string.
+
+### usage:
+
+```js
+import { isString } from "@achmadeko003/validate/index";
+
+new isString("pururu").check(); // Basic usage for validate value type is string or not
+new isString("pururu!").useSymbols().check(); // Add useSymbols() for excluded symbols
+new isString("pururu2").useNumber().check(); // Add useNumber() for excluded symbols
+new isString("pururu").useSymbols().useNumber().check(); // or add useSymbols() and useNumber() for exluded character symbols and number
+new isString("pururu2").maxLength(3); // Add maxLength() for check string length
+new isString("https://example.com").checkLinkURL(); // checkLinkURL() for validate if string is https:// or http:// URL
 ```
 
 ## Object
@@ -61,12 +75,10 @@ const profile = {
   address: null,
 };
 
-// Basic usage
-new isObject(profile).check();
+new isObject(profile).check(); // Basic usage
 // true
 
-// Validate object key values
-new isObject(profile).valueNull();
+new isObject(profile).valueNull(); // Validate object key values
 // {
 //  status: true,
 //  detail: [
@@ -75,8 +87,7 @@ new isObject(profile).valueNull();
 //  ]
 // }
 
-// Validate specific object key values
-new isObject(profile).setKeys(["phone", "email"]).valueNull();
+new isObject(profile).setKeys(["phone", "email"]).valueNull(); // Validate specific object key values
 // {
 //  status: true,
 //  detail: [
