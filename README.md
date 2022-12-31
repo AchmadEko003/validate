@@ -7,6 +7,7 @@ A package for validate.
 - [Email](#email)
 - [Object](#object)
 - [String](#string)
+- [Empty](#empty)
 
 ## Installation
 
@@ -94,4 +95,18 @@ new isObject(profile).setKeys(["phone", "email"]).valueNull(); // Validate speci
 //    'phone value is null or undefined'
 //  ]
 // }
+```
+
+## Email
+
+A function for validate field null or undefined.
+
+### usage:
+
+```js
+import { isEmpty } from "@achmadeko003/validate/index";
+
+const phoneNumber = null;
+
+isEmpty(phoneNumber); // Basic usage that return true if value null or undefined
 ```
