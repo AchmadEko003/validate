@@ -97,7 +97,7 @@ new isObject(profile).setKeys(["phone", "email"]).valueNull(); // Validate speci
 // }
 ```
 
-## Email
+## Empty
 
 A function for validate field null or undefined.
 
