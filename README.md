@@ -110,3 +110,27 @@ const phoneNumber = null;
 
 isEmpty(phoneNumber); // Basic usage that return true if value null or undefined
 ```
+
+## Array
+
+A function for validate, convert string array and object to array.
+
+### usage:
+
+```js
+import { isArray } from "@achmadeko003/validate/index";
+
+const array = ['a', 'b', 'c']
+const object = {
+    a: 'aa',
+    b: 'bb',
+    c: 'cc'
+}
+const string = "abcd"
+const stringSeparator = "ab-cd"
+
+isArray.check(array) // Validate value is array or not
+isArray.parseObject(object) // Convert object value to array base on object values
+isArray.parseString(string) // Convert string value to array
+isArray.parseString(stringSeparator, "-") // Convert string value to array with specific separator
+```
