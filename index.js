@@ -3,7 +3,7 @@ const fieldValidator = require("./lib/field-validate");
 const { stringValidator } = require("./lib/isString");
 const { numberValidator } = require("./lib/isNumber");
 const { objectValidator } = require("./lib/isObject");
-const arrayValidator = require("./lib/isArray")
+const arrayValidator = require("./lib/isArray");
 
 module.exports = {
   validate: fieldValidator,
@@ -13,5 +13,5 @@ module.exports = {
   isArray: arrayValidator,
   isString: stringValidator,
   isNumber: numberValidator,
-  isObject: objectValidator
+  isObject: objectValidator,
 };
