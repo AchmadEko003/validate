@@ -8,6 +8,7 @@ A package for validate.
 - [Object](#object)
 - [String](#string)
 - [Empty](#empty)
+- [Array](#array)
 
 ## Installation
 
